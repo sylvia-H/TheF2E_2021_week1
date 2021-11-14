@@ -1,0 +1,67 @@
+.navbar-toggler {
+    background-color: $icon; // remove default button style
+    border:0;
+    border-radius:10px;
+    padding: 0.5rem 0.35rem;
+    &:focus {
+      box-shadow: 0 0 0 0;
+    }
+}
+
+.burger {
+  font-size: 8px;
+  cursor: pointer;
+  padding: 1.5em 0.5em;
+  & > div {
+    width: 4em;
+    height: 0.5em;
+    border-radius: 1em;
+    background: #fff;
+    &::before,
+    &::after {
+      transition: font-size 0s;
+      content: "";
+      display: block;
+      position: absolute;
+      width: 3em;
+      height: 0.5em;
+      background: #fff;
+      border-radius: 1em;
+    }
+    &::before {
+      margin-top: -1em;
+      margin-left: 1em;
+    }
+    &::after {
+      margin-top: 1em;
+      margin-left: 1em;
+    }
+  }
+}
+
+.burger1 {
+  transition: all 0.7s, font-size 0s;
+  transition-timing-function: cubic-bezier(0.68, -0.35, 0.265, 1.35);
+  & > div {
+    transition: all 0.1s 0.3s, font-size 0s;
+    &::before,
+    &::after {
+      transition: all 0.3s 0.2s, font-size 0s;
+    }
+  }
+  &.toggled {
+    transform: rotate(180deg);
+    > div::before {
+      transform: rotate(45deg) translate(0em, 1.5em);
+      width:4em;
+    }
+    > div {
+      background: transparent;
+    }
+    > div::after {
+      transform: rotate(-45deg) translate(0em, -1.5em);
+      width:4em;
+    }
+  }
+}
+

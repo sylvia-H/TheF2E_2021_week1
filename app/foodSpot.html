@@ -1,0 +1,475 @@
+---
+title: Tai Walk
+layout: ./app/layout.ejs
+engine: ejs
+current: foodSpot
+---
+
+<div class="container">
+    <div class="foodSpot_Breadcrumb text-primary | mb-4 mb-lg-9">
+        <a href="index.html">首頁</a> / 
+        <a href="./foodSpot.html">
+            <span class="breadcrumb_theme text-secondary">品嚐美食</span>
+        </a>
+        <span class="breadcrumb_city text-primary"></span>
+        <span class="breadcrumb_foodSpot text-secondary"></span>
+    </div>
+</div>
+<section>
+    <div class="container">
+        <div class="foodSpot_resultArea">
+            <!-- 搜尋列 -->
+            <div class="row | mb-6 mb-lg-11">
+                <div class="col-12 col-lg-3">
+                    <select class="search_city form-select | mb-2" aria-label="select">
+                        <option value="全部縣市" selected>全部縣市</option>
+                        <option value="Taipei">臺北市</option>
+                        <option value="NewTaipei">新北市</option>
+                        <option value="Taoyuan">桃園市</option>
+                        <option value="Taichung">臺中市</option>
+                        <option value="Tainan">臺南市</option>
+                        <option value="Kaohsiung">高雄市</option>
+                        <option value="Keelung">基隆市</option>
+                        <option value="Hsinchu">新竹市</option>
+                        <option value="HsinchuCounty">新竹縣</option>
+                        <option value="MiaoliCounty">苗栗縣</option>
+                        <option value="ChanghuaCounty">彰化縣</option>
+                        <option value="NantouCounty">南投縣</option>
+                        <option value="YunlinCounty">雲林縣</option>
+                        <option value="ChiayiCounty">嘉義縣</option>
+                        <option value="Chiayi">嘉義市</option>
+                        <option value="PingtungCounty">屏東縣</option>
+                        <option value="YilanCounty">宜蘭縣</option>
+                        <option value="HualienCounty">花蓮縣</option>
+                        <option value="TaitungCounty">臺東縣</option>
+                        <option value="KinmenCounty">金門縣</option>
+                        <option value="PenghuCounty">澎湖縣</option>
+                        <option value="LienchiangCounty">連江縣</option>
+                    </select>
+                </div>
+                <div class="col-12 col-lg-6">
+                    <input class="search_keyword form-control | mb-2" type="text" placeholder="你想吃什麼？請輸入關鍵字" aria-label="你想去哪裡？請輸入關鍵字">
+                </div>
+                <div class="col-12 col-lg-3">
+                    <button type="submit" class="search_submit btn btn-success text-white w-100">
+                        <i class="fa fa-search | me-4" aria-hidden="true"></i>
+                        搜&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;尋
+                    </button>
+                </div>
+            </div>
+
+            <!-- 主題分類區 -->
+            <h5 class="fz-6 fz-lg-9 text-dark fw-light | mb-4 mb-lg-5">熱門分類</h5>
+            <div class="foodSpot_showResultClass | row">
+                <div class="col-6 col-md-4 col-lg-3"></div>
+            </div>
+        </div>
+
+        <div class="foodSpot_showSpotArea d-none">
+            <!-- 結果呈現區 -->
+
+            <!-- Hero Banner Swiper -->
+            <div class="mb-6 mb-lg-9">
+                <div class="container">
+                    <div class="scenicSpot_heroSwiper | swiper swiper-initialized swiper-horizontal swiper-pointer-events swiper-css-mode">
+                        <ul class="swiper-wrapper">
+                            <!-- 第一張 -->
+                            <li class="swiper-slide unselectable">
+                                <img src="" alt="">
+                            </li>
+                            <!-- 第二張 -->
+                            <li class="swiper-slide unselectable">
+                                <img src="" alt="">
+                            </li>
+                            <!-- 第三張 -->
+                            <li class="swiper-slide unselectable">
+                                <img src="" alt="">
+                            </li>
+                        
+                        </ul>
+
+                        <!-- swiper-pagination -->
+                        <div class="swiper-button-next | d-none d-lg-block | me-7" tabindex="0" role="button" aria-label="Next slide" aria-controls="swiper-wrapper-7ed39f2addecc58d" aria-disabled="false">
+                            <img src="./assets/images/Arrow-Right.png" alt="Arrow-Right">
+                        </div>
+                        <div class="swiper-button-prev | d-none d-lg-block | ms-7" tabindex="-1" role="button" aria-label="Previous slide" aria-controls="swiper-wrapper-7ed39f2addecc58d" aria-disabled="true">
+                            <img src="./assets/images/Arrow-Left.png" alt="Arrow-Left">
+                        </div>
+                        <div class="swiper-pagination swiper-pagination-bullets swiper-pagination-horizontal"></div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- 美食餐廳介紹 -->
+            <h1 class="fz-6 fz-lg-9 text-dark fw-light | mb-2 mb-lg-4">
+                金都餐廳
+            </h1>
+            <h2 class="mb-5 mb-lg-8">
+                <span class="btn btn-outline-info rounded-pill | fz-3 fz-lg-5"># 中式美食</span>
+            </h2>
+
+            <h4 class="fz-4 fz-lg-5 text-dark fw-bold | mb-3">餐廳介紹：</h4>
+            <h3 class="spot_description | fz-4 fz-lg-5 fw-light | mb-8 mb-lg-12">
+                埔里金都餐廳於1994年創立於美麗的台灣中心埔里，1995年起創意取材埔里名酒研發推出紹興宴，揚名台北中華美食展，此後，不斷結合地方鄉土農特產，持續研發新健康美食與主題饗宴(日月潭邵族宴、水果宴、梅宴、茭白筍大餐、珍菇水筍宴、養生御膳、百花宴、香草宴、香米喜宴、原鄉風味餐、2003時尚蕃茄宴…等)，更榮耀承辦聖文森總理及五國元首國宴，成功的在台灣捲起金都美食風！精采展現台灣美食新風情，成為台灣中部旅遊線首選最佳的美食餐廳，並連續四年榮獲優經濟部選拔為質餐廳之殊榮。
+            </h3>
+
+            <!-- 美食餐廳相關資訊 -->
+            <div class="row | mb-12">
+                <div class="spot_info col-12 col-lg-6 h-100">
+                    <table>
+                        <tbody valign="top">
+                            <tr>
+                                <td width="20%" class="fz-4 fw-bold">營業時間：</td>
+                                <td class="foodSpot_resultTime">上午11:00~14:30下午17:00~21:00</td>
+                            </tr>
+                            <tr>
+                                <td class="fz-4 fw-bold">聯絡電話：</td>
+                                <td class="foodSpot_resultPhone">886-49-2995096</td>
+                            </tr>
+                            <tr>
+                                <td class="fz-4 fw-bold">餐廳地址：</td>
+                                <td class="foodSpot_resultAddress">南投縣埔里鎮信義路236號</td>
+                            </tr>
+                            <tr>
+                                <td class="fz-4 fw-bold">官方網站：</td>
+                                <td class="foodSpot_resultWeb">http://www.jindu1994.com/</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="spot_relatedInfo col-12 col-lg-6">
+                    <div class="spot_map | rounded-4 overflow-hidden | mb-5 mb-lg-8">
+                        <iframe 
+                            width="100%" 
+                            height="230" 
+                            frameborder="0"
+                            src="https://www.google.com/maps?q=(埔里金都餐廳)&hl=zh-TW&z=16&t=&output=embed">
+                        </iframe>
+                    </div>
+                    
+                    <h5 class="fz-4 fz-lg-5 text-dark fw-bold | mb-3">周邊資訊：</h5>
+                    <div class="row">
+                        <div class="col-12 col-lg-4 g-30">
+                            <div class="border border-light bg-white rounded-3 text-center | py-4 px-9">
+                                <a class="d-flex flex-column ai-c" href="#">
+                                    <img class="nearbyIcon" src="./assets/images/nearby-scene30.png" height="30px" width="30px" alt="nearby-scene">
+                                    <img class="nearbyIcon_hover" src="./assets/images/nearby-scene30_hover.png" height="30px" width="30px" alt="nearby-scene">
+                                    <p class="text-primary fz-4 fw-bold">
+                                        附近景點
+                                    </p>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-4 g-30">
+                            <div class="border border-light bg-white rounded-3 text-center | py-4 px-9">
+                                <a class="d-flex flex-column ai-c" href="#">
+                                    <img class="nearbyIcon" src="./assets/images/nearby-event30.png" height="30px" width="30px" alt="nearby-scene">
+                                    <img class="nearbyIcon_hover" src="./assets/images/nearby-event30_hover.png" height="30px" width="30px" alt="nearby-scene">
+                                    <p class="text-primary fz-4 fw-bold">
+                                        附近活動
+                                    </p>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-4 g-30">
+                            <div class="border border-light bg-white rounded-3 text-center | py-4 px-9">
+                                <a class="d-flex flex-column ai-c" href="#">
+                                    <img class="nearbyIcon" src="./assets/images/nearby-food30.png" height="30px" width="30px" alt="nearby-scene">
+                                    <img class="nearbyIcon_hover" src="./assets/images/nearby-food30_hover.png" height="30px" width="30px" alt="nearby-scene">
+                                    <p class="text-primary fz-4 fw-bold">
+                                        附近美食
+                                    </p>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            
+            <!-- 還有這些不能錯過 -->
+            <div class="mb-9">
+                <div class="container">
+                    <div class="d-flex jc-sb ai-c | mb-3">
+                        <h4 class="fz-6 fz-lg-9 text-dark fw-light">還有這些不能錯過</h4>
+                        <h5>
+                            <a class="fz-4 fw-medium text-warning" href="./foodSpot.html">
+                                查看更多美食 ❯
+                            </a>
+                        </h5>
+                    </div>
+                    <div class="row">
+                        <!-- 手機版/平板顯示 swiper -->
+                        <div class="col-12 | overflow-hidden">
+                            <div class="scenicSpotSwiper swiper-container">
+                                <div class="recommend_foodSpot | swiper-wrapper"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+
+
+
+    </div>
+</section>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.4/axios.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jsSHA/3.2.0/sha.js"></script>
+<script>
+    // header 驗證
+    function getAuthorizationHeader() {
+        let AppID = '9eeb30e3588740618367a446631cbc3f';
+        let AppKey = 'CKTwBadJd3_0_EdqiXE0kEg8fTw';
+        let GMTString = new Date().toGMTString();
+        let ShaObj = new jsSHA('SHA-1', 'TEXT');
+        ShaObj.setHMACKey(AppKey, 'TEXT');
+        ShaObj.update('x-date: ' + GMTString);
+        let HMAC = ShaObj.getHMAC('B64');
+        let Authorization = 'hmac username=\"' + AppID + '\", algorithm=\"hmac-sha1\", headers=\"x-date\", signature=\"' + HMAC + '\"';
+        return { 'Authorization': Authorization, 'X-Date': GMTString }; 
+    }
+
+    // endpoints
+    const endpoint_restaurant = 'https://ptx.transportdata.tw/MOTC/v2/Tourism/Restaurant?$filter=Picture/PictureUrl1 ne null&$format=JSON';
+
+    // 抓取畫面物件
+    const foodSpot_showResultClass = document.querySelector('.foodSpot_showResultClass');
+    const foodSpot_resultArea = document.querySelector('.foodSpot_resultArea');
+    const foodSpot_showSpotArea = document.querySelector('.foodSpot_showSpotArea');
+
+    // 品嚐美食 foodSpot 熱門主題分類：取得資料 & 渲染畫面
+    function foodSpot_getClass(){
+        axios.get(endpoint_restaurant,
+            {
+            headers: getAuthorizationHeader()
+            }
+        )
+        .then(function (response) {
+            const thisData = response.data;
+            
+            console.log(thisData)
+            // 過濾資料的美食 foodSpot 類別
+            let foodSpot_class1 = [];
+            thisData.forEach(el => {
+                if(el.Picture.PictureUrl1 && el.Name && el.Class) foodSpot_class1.push({class:el.Class,item:el});
+            });
+
+            // 將品嚐美食 foodSpot 熱門主題進行分類與計數
+            let foodSpot_class = new Set();
+            foodSpot_class1.forEach(el=>foodSpot_class.add(el.class));
+            console.log(Array.from(foodSpot_class));
+
+            let str="";
+            let itemNum = 0;
+            while(itemNum<Array.from(foodSpot_class).length){
+                const newArr = foodSpot_class1.filter(el=>el.class===Array.from(foodSpot_class)[itemNum]);
+                let dataIndex= Math.floor(Math.random()*newArr.length);
+                str+=`
+                <div class="foodSpotClass_Card col-6 col-md-4 col-lg-3 | position-relative">
+                    <div class="ratio ratio-16x9 rounded-4 | overflow-hidden | mb-3">
+                        <img class="img-cover" src="${newArr[dataIndex].item.Picture.PictureUrl1}" alt="${newArr[dataIndex].item.Name}">
+                    </div>
+                    <p class="text-white fz-4 fz-lg-5 fw-bold | position-absolute top-50 start-50 translate-middle">${Array.from(foodSpot_class)[itemNum]}</p>
+                </div>`;
+                itemNum++;
+            }
+            foodSpot_showResultClass.innerHTML = str;
+        })
+        .catch(function (error) {
+            console.log(error);
+        }); 
+    }
+    
+    // 抓取畫面物件
+    const breadcrumb_theme = document.querySelector('.breadcrumb_theme');
+    const breadcrumb_city = document.querySelector('.breadcrumb_city');
+    const breadcrumb_foodSpot = document.querySelector('.breadcrumb_foodSpot');
+    const scenicSpot_heroSwiperSlides = document.querySelectorAll('.swiper-slide');
+    const scenicSpot_heroBullets = document.querySelector('.swiper-pagination-bullets');
+    const foodSpot_resultName = document.getElementsByTagName('h1')[0];
+    const foodSpot_resultClass = document.getElementsByTagName('h2')[0];
+    const foodSpot_resultDescription = document.querySelector('.spot_description');
+    const foodSpot_resultTime = document.querySelector('.foodSpot_resultTime');
+    const foodSpot_resultPhone = document.querySelector('.foodSpot_resultPhone');
+    const foodSpot_resultAddress = document.querySelector('.foodSpot_resultAddress');
+    const foodSpot_resultWeb = document.querySelector('.foodSpot_resultWeb');
+    const spot_map = document.querySelector('.spot_map');
+
+    // 抓取畫面物件
+    const recommend_foodSpot = document.querySelector('.recommend_foodSpot');
+
+    // 推薦其他不能錯過的活動
+    function recommend_showFoodSpot(city){
+        axios.get(endpoint_restaurant,
+            {
+            headers: getAuthorizationHeader()
+            }
+        )
+        .then(function (response) {
+            const thisData = response.data;
+            const recommendData = thisData.filter(el=>el.City===city);
+            console.log(recommendData);
+            let str="";
+            let strNum = 0;
+            while(strNum<4){
+                let dataIndex= Math.floor(Math.random()*recommendData.length);
+                const item = recommendData[dataIndex];
+                if(item.Name && item.Picture.PictureUrl1 && item.Address){
+                    str+=`
+                    <div class="swiper-slide unselectable">
+                        <div class="ratio ratio-13x10 rounded-4 | overflow-hidden | mb-3">
+                            <a href="./foodSpot.html?id=${item.ID}">
+                                <img class="w-100 h-100 img-cover" src="${item.Picture.PictureUrl1}" alt="${item.Name}">    
+                            </a>
+                        </div>
+                        <h5 class="ellipsis | fz-4 fz-lg-5 | mb-2">${item.Name}</h5>
+                        <p class="card-text text-secondary | fz-3 fz-lg-4">
+                            <small>
+                                <img src="./assets/images/spot16.png" alt="spot icon">
+                                ${item.Address.slice(0,3)}
+                            </small>
+                        </p>
+                    </div>`
+                    strNum++;
+                }
+            }
+            recommend_foodSpot.innerHTML = str;
+        })
+        .catch(function (error) {
+            console.log(error);
+        }); 
+    }
+
+
+    
+    // 品嚐美食 foodSpot 展示餐廳美食資訊：取得資料 & 渲染畫面
+    function foodSpot_show(id){
+        axios.get(endpoint_restaurant,
+            {
+            headers: getAuthorizationHeader()
+            }
+        )
+        .then(function (response) {
+            const thisData = response.data;
+
+            // 搜尋ID，取得活動資料
+            let targetInfo = thisData.filter(el=>el.ID===id);
+            console.log(targetInfo[0]);
+
+            // 更改麵包屑
+            breadcrumb_theme.classList.remove('text-secondary');
+            breadcrumb_theme.classList.add('text-primary');
+            breadcrumb_city.innerHTML = ` / ${targetInfo[0].City}`;
+            breadcrumb_foodSpot.innerHTML = ` / ${targetInfo[0].Name}`;
+
+            // Hero 加入活動照片
+            let heroPhoto_num = 0;
+            if(targetInfo[0].Picture.PictureUrl1){
+                scenicSpot_heroSwiperSlides[0].innerHTML=`
+                    <img class="w-100 h-100 img-cover" src="${targetInfo[0].Picture.PictureUrl1}" alt="${targetInfo[0].Picture.PictureDescription1}">`;
+                heroPhoto_num++;
+            }
+            if(targetInfo[0].Picture.PictureUrl2){
+                scenicSpot_heroSwiperSlides[1].innerHTML=`
+                    <img class="w-100 h-100 img-cover" src="${targetInfo[0].Picture.PictureUrl2}" alt="${targetInfo[0].Picture.PictureDescription2}">`;
+                heroPhoto_num++;
+            }else{
+                scenicSpot_heroSwiperSlides[1].remove();
+                scenicSpot_heroBullets.classList.add('d-none');
+            }
+            if(targetInfo[0].Picture.PictureUrl3){
+                scenicSpot_heroSwiperSlides[2].innerHTML=`
+                    <img class="w-100 h-100 img-cover" src="${targetInfo[0].Picture.PictureUrl3}" alt="${targetInfo[0].Picture.PictureDescription3}">`;
+                heroPhoto_num++;
+            }else{
+                scenicSpot_heroSwiperSlides[2].remove();
+                scenicSpot_heroBullets.classList.add('d-none');
+            }
+            if(heroPhoto_num<=1){
+                document.querySelector('.swiper-button-next').classList.add('d-lg-none');
+                document.querySelector('.swiper-button-prev').classList.add('d-lg-none');
+            }
+
+            // 添加餐廳美食名稱
+            foodSpot_resultName.innerText = targetInfo[0].Name;
+
+            // 添加餐廳美食類別 Class
+            let classStr="";
+            if(targetInfo[0].Class){
+                classStr+=`
+                <span class="btn btn-outline-info rounded-pill | fz-3 fz-lg-5">
+                    # ${targetInfo[0].Class}
+                </span>`;
+            }
+            foodSpot_resultClass.innerHTML=classStr;
+
+            // 添加餐廳美食介紹
+            foodSpot_resultDescription.innerText = targetInfo[0].Description;
+
+            // 餐廳美食時間
+            foodSpot_resultTime.innerHTML = `${targetInfo[0].OpenTime}`;
+
+            // 餐廳美食連絡電話
+            if(targetInfo[0].Phone){
+                foodSpot_resultPhone.innerHTML = `
+                <a href="tel:${targetInfo[0].Phone}">
+                    ${targetInfo[0].Phone}
+                </a>`;
+            } else {
+                foodSpot_resultPhone.innerText = "無";
+            }
+
+            // 餐廳美食地址
+            foodSpot_resultAddress.innerHTML = `${targetInfo[0].Address}`;
+
+            // 餐廳美食官方網站
+            if(targetInfo[0].WebsiteUrl){
+                foodSpot_resultWeb.innerHTML = `
+                <a href="${targetInfo[0].WebsiteUrl}" target="_blank">
+                    ${targetInfo[0].WebsiteUrl}
+                </a>`;
+            } else {
+                foodSpot_resultWeb.innerText = "無";
+            }
+
+            // 景點地圖
+            spot_map.innerHTML = `
+                <iframe 
+                    width="100%" 
+                    height="230" 
+                    frameborder="0"
+                    src="https://www.google.com/maps?q=${targetInfo[0].Address}(${targetInfo[0].Name})&hl=zh-TW&z=15&t=&output=embed">
+                </iframe>`;
+
+            // 推薦其他不能錯過的景點
+            recommend_showFoodSpot(targetInfo[0].City);
+
+        })
+        .catch(function (error) {
+            console.log(error);
+        }); 
+    }
+
+
+    // 判斷初始狀況
+    if(!location.search){
+        foodSpot_getClass();
+    } else {
+        foodSpot_resultArea.classList.add('d-none');
+        foodSpot_showSpotArea.classList.remove('d-none');
+        const arr1 = location.search.split('?');
+        const id = arr1[1].split('=')[1];
+        console.log(id);
+        foodSpot_show(id);
+    }
+
+    
+
+</script>
