@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Tai Walk</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp"
+      rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <!-- <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" /> -->
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.6/css/swiper.min.css" /> -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vanillajs-datepicker@1.1.4/dist/css/datepicker.min.css">
+    <link rel="stylesheet" href="https://cdn.rawgit.com/ConnorAtherton/loaders.css/master/loaders.min.css">
+    <link rel="stylesheet" href="./assets/style/all.css">
+  </head>
+
+  <body>
+    <!-- 導覽列 -->
+    <nav class="navbar navbar-expand-lg navbar-light border-bottom | py-4 py-lg-5">
+      <div class="container">
+        <!-- 台灣走走 TaiWalk-logo -->
+        <a class="navbar-brand mx-auto mx-lg-0" href="./index.html">
+          <img class="d-none d-lg-block" src="./assets/images/Logo-desktop.png" alt="台灣走走 Tai Walk" width="241px" height="32px">
+          <img class="d-block d-lg-none" src="./assets/images/Logo-mobile.png" alt="台灣走走 Tai Walk" width="118px" height="30px">
+        </a>
+        <!-- 漢堡 -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <!-- <span class="navbar-toggler-icon"></span> -->
+          <!-- <span class="material-icons-outlined text-white">
+            menu
+          </span> -->
+          <div class="burger burger1">
+            <div></div>
+          </div>
+        </button>
+        <!-- 選單內容 -->
+        <div class="collapse navbar-collapse flex-grow-0" id="navbarSupportedContent">
+          <ul class="navbar-nav">
+            <li class="nav-item | me-4">
+              <a class="nav-link text-secondary | hvr-underline-from-center" aria-current="page" href="./scenicSpot.html">
+                探索景點
+              </a>
+            </li>
+            <li class="nav-item | me-4">
+              <a class="nav-link text-secondary | hvr-underline-from-center" href="./activity.html">
+                節慶活動
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-secondary | hvr-underline-from-center" aria-current="page" href="./foodSpot.html">
+                品嚐美食
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- main 主內容區 -->
+
+    <main class="container | pt-7 pt-lg-12 pb-13 pb-lg-19">
+      
+      <section>
+    <div class="container | mb-9 mb-lg-11">
+        <div class="row">
+            <div class="col-10 col-lg-6 offset-1 | mb-9 mb-lg-0">
+                <h2 class="fz-7 fz-lg-10 text-dark fw-light | text-center text-lg-start mb-2">探索<span class="text_bline_yellow">台灣之美</span></h2>
+                <h3 class="fz-7 fz-lg-10 text-dark fw-light | text-center text-lg-start mb-4 mb-lg-5">讓我們更親近這片土地</h2>
+                <h1 class="fz-4 fz-lg-5 text-secondary fw-normal | text-center text-lg-start">
+                    <img class="me-1" src="./assets/images/spot24_Y.png" alt="spot icon">
+                    台灣旅遊景點導覽
+                    <span class="fz-3 fz-lg-4 ms-2">Taiwan Travel Guide</span>
+                </h1>
+            </div>
+            <div class="col-12 col-lg-4">
+                <form>
+                    <select class="search_type form-select | mb-2" aria-label="select">
+                        <option value="scenicSpot" selected>探索景點</option>
+                        <option value="activity">節慶活動</option>
+                        <option value="foodSpot">品嚐美食</option>
+                    </select>
+                    <input class="search_keyword form-control | mb-2" type="text" placeholder="你想去哪裡？請輸入關鍵字" aria-label="你想去哪裡？請輸入關鍵字">
+                    <button type="submit" class="search_submit btn btn-success text-white w-100">
+                        <i class="fa fa-search | me-4" aria-hidden="true"></i>
+                        搜&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;尋
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Hero Banner Swiper -->
+<section class="mb-6 mb-lg-9">
+    <div class="container">
+        <div class="heroSwiper | swiper swiper-initialized swiper-horizontal swiper-pointer-events swiper-css-mode">
+            <ul class="swiper-wrapper">
+                <!-- 第一張 -->
+                <li class="swiper-slide unselectable">
+                    <a href="./scenicSpot.html?id=C1_382000000A_110088">
+                        <img class="w-100 h-100 img-cover" src="./assets/images/ScenicSpotPicture.jpg" alt="新北市不厭亭">
+                        <h3 class="fz-6 fz-lg-8 fw-bold text-white | position-absolute top-50 start-50 translate-middle">
+                            新北市<span>&nbsp;&nbsp;|&nbsp;&nbsp;</span>不厭亭
+                        </h3>
+                    </a>
+                </li>
+            
+                <!-- 第二張 -->
+                <li class="swiper-slide unselectable">
+                    <a href="./scenicSpot.html?id=C1_382000000A_402418">
+                        <img class="w-100 h-100 img-cover" 
+                        src="https://newtaipei.travel/content/images/attractions/39586/640x480_attractions-image-xbdted4aqu-kph3r-6ykla.jpg" 
+                        alt="新北市芝蘭公園(芝蘭觀景平台)">
+                        <h3 class="fz-6 fz-lg-8 fw-bold text-white | position-absolute top-50 start-50 translate-middle">
+                            新北市<span>&nbsp;&nbsp;|&nbsp;&nbsp;</span>芝蘭公園(芝蘭觀景平台)
+                        </h3>
+                    </a>
+                </li>
+            
+                <!-- 第三張 -->
+                <li class="swiper-slide unselectable">
+                    <img class="w-100 h-100 img-cover"
+                     src="https://penghutravel.com/FileDownload/TravelInformation/NotSet/Scenery/8/057.jpg" 
+                     alt="澎湖縣七美雙心石滬">
+                    <h3 class="fz-6 fz-lg-8 fw-bold text-white | position-absolute top-50 start-50 translate-middle">
+                        澎湖縣<span>&nbsp;&nbsp;|&nbsp;&nbsp;</span>七美雙心石滬
+                    </h3>
+                </li>
+            
+                <!-- 第四張 -->
+                <li class="swiper-slide unselectable">
+                    <img class="w-100 h-100 img-cover" 
+                    src="https://swcoast-nsa.travel/image/13063/640x480" 
+                    alt="臺南市四草綠色隧道">
+                    <h3 class="fz-6 fz-lg-8 fw-bold text-white | position-absolute top-50 start-50 translate-middle">
+                        臺南市<span>&nbsp;&nbsp;|&nbsp;&nbsp;</span>四草綠色隧道
+                    </h3>
+                </li>
+                
+                <!-- 第五張 -->
+                <li class="swiper-slide unselectable">
+                    <img class="w-100 h-100 img-cover" 
+                    src="https://swcoast-nsa.travel/image/2570/640x480" 
+                    alt="臺南市蘆竹溝觀光漁港">
+                    <h3 class="fz-6 fz-lg-8 fw-bold text-white | position-absolute top-50 start-50 translate-middle">
+                        臺南市<span>&nbsp;&nbsp;|&nbsp;&nbsp;</span>蘆竹溝觀光漁港
+                    </h3>
+                
+                <!-- 第六張 -->
+                <li class="swiper-slide unselectable">
+                    <img class="w-100 h-100 img-cover" 
+                    src="https://tourism.chcg.gov.tw/upload/27/2017093011325547320.jpg" 
+                    alt="彰化縣永靖公學校宿舍">
+                    <h3 class="fz-6 fz-lg-8 fw-bold text-white | position-absolute top-50 start-50 translate-middle">
+                        彰化縣<span>&nbsp;&nbsp;|&nbsp;&nbsp;</span>永靖公學校宿舍
+                    </h3>
+                </li>
+            
+            </ul>
+
+            <!-- swiper-pagination -->
+            <div class="swiper-button-next | d-none d-lg-block | me-7" tabindex="0" role="button" aria-label="Next slide" aria-controls="swiper-wrapper-7ed39f2addecc58d" aria-disabled="false">
+                <img src="./assets/images/Arrow-Right.png" alt="Arrow-Right">
+            </div>
+            <div class="swiper-button-prev | d-none d-lg-block | ms-7" tabindex="-1" role="button" aria-label="Previous slide" aria-controls="swiper-wrapper-7ed39f2addecc58d" aria-disabled="true">
+                <img src="./assets/images/Arrow-Left.png" alt="Arrow-Left">
+            </div>
+            <div class="swiper-pagination swiper-pagination-bullets swiper-pagination-horizontal"></div>
+
+        </div>
+    </div>
+</section>
+
+<!-- 近期活動 -->
+<section class="mb-9">
+    <div class="container">
+        <div class="d-flex jc-sb ai-c | mb-3">
+            <h4 class="fz-6 fz-lg-9 text-dark fw-light">近期活動</h4>
+            <h5>
+                <a class="fz-4 fw-medium text-warning" href="./activity.html">
+                    查看更多活動 ❯
+                </a>
+            </h5>
+        </div>
+        <div class="home_activity | row"></div>
+    </div>
+</section>
+
+<!-- 熱門打卡景點 -->
+<section class="mb-9">
+    <div class="container">
+        <div class="d-flex jc-sb ai-c | mb-3">
+            <h4 class="fz-6 fz-lg-9 text-dark fw-light">熱門打卡景點</h4>
+            <h5>
+                <a class="fz-4 fw-medium text-warning" href="./scenicSpot.html">
+                    查看更多景點 ❯
+                </a>
+            </h5>
+        </div>
+        <div class="row">
+            <!-- 手機版/平板顯示 swiper -->
+            <div class="col-12 | overflow-hidden">
+                <div class="scenicSpotSwiper swiper-container">
+                    <div class="home_scenicSpot | swiper-wrapper"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 一再回訪美食 -->
+<section>
+    <div class="container">
+        <div class="d-flex jc-sb ai-c | mb-3">
+            <h4 class="fz-6 fz-lg-9 text-dark fw-light">一再回訪美食</h4>
+            <h5>
+                <a class="fz-4 fw-medium text-warning" href="./foodSpot.html">
+                    查看更多美食 ❯
+                </a>
+            </h5>
+        </div>
+        <div class="row">
+            <!-- 手機版/平板顯示 swiper -->
+            <div class="col-12 | overflow-hidden">
+                <div class="foodSpotSwiper swiper-container">
+                    <div class="home_foodSpot | swiper-wrapper"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.4/axios.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jsSHA/3.2.0/sha.js"></script>
+<script>
+    // header 驗證
+    function getAuthorizationHeader() {
+        let AppID = '9eeb30e3588740618367a446631cbc3f';
+        let AppKey = 'CKTwBadJd3_0_EdqiXE0kEg8fTw';
+        let GMTString = new Date().toGMTString();
+        let ShaObj = new jsSHA('SHA-1', 'TEXT');
+        ShaObj.setHMACKey(AppKey, 'TEXT');
+        ShaObj.update('x-date: ' + GMTString);
+        let HMAC = ShaObj.getHMAC('B64');
+        let Authorization = 'hmac username=\"' + AppID + '\", algorithm=\"hmac-sha1\", headers=\"x-date\", signature=\"' + HMAC + '\"';
+        return { 'Authorization': Authorization, 'X-Date': GMTString }; 
+    }
+
+    // endpoints
+    const endpoint_Scenic = 'https://ptx.transportdata.tw/MOTC/v2/Tourism/ScenicSpot/?$filter=Picture/PictureUrl1 ne null&$format=JSON';
+    const endpoint_activity = 'https://ptx.transportdata.tw/MOTC/v2/Tourism/Activity?$filter=Picture/PictureUrl1 ne null&$format=JSON';
+    const endpoint_hotel = 'https://ptx.transportdata.tw/MOTC/v2/Tourism/Hotel?$format=JSON';
+    const endpoint_restaurant = 'https://ptx.transportdata.tw/MOTC/v2/Tourism/Restaurant?$format=JSON';
+
+    // 抓取畫面物件
+    const home_activity = document.querySelector('.home_activity');
+    const home_scenicSpot = document.querySelector('.home_scenicSpot');
+    const home_foodSpot = document.querySelector('.home_foodSpot');
+
+    // 首頁近期活動 home_activity：取得資料 & 渲染畫面
+    function init_activity(){
+        axios.get(endpoint_activity,
+            {
+            headers: getAuthorizationHeader()
+            }
+        )
+        .then(function (response) {
+            const thisData = response.data;
+            let str="";
+            let strNum = 0;
+            const month = new Date().getMonth()+1;
+            const year = new Date().getFullYear();
+            while(strNum<4){
+                let dataIndex= Math.floor(Math.random()*thisData.length);
+                const item = thisData[dataIndex];
+                const checkDate = parseInt(item.EndTime.slice(0,4))>=year && parseInt(item.EndTime.slice(5,7))>=month || parseInt(item.EndTime.slice(0,4))>year;
+                if(item.Picture.PictureUrl1 && !item.Name.includes('事項') && checkDate){
+                    str+=`
+                    <div class="col-12 col-lg-6 | mb-4">
+                        <div class="card">
+                            <div class="row g-0">
+                            <div class="col-4 | overflow-hidden">
+                                <a href="./activity.html?id=${item.ID}">
+                                    <img class="card-img img-cover"
+                                    src="${item.Picture.PictureUrl1}" 
+                                    alt="${item.Picture.PictureDescription1}">
+                                </a>
+                            </div>
+                            <div class="col-8">
+                                <div class="card-body">
+                                <div>
+                                    <p class="text-secondary | fz-3 fz-lg-4">
+                                        ${item.StartTime.slice(0,10)} - ${item.EndTime.slice(0,10)}
+                                    </p>
+                                    <h5 class="card-title ellipsis | fz-4 fz-lg-5">${item.Name}</h5>
+                                </div>
+                                <div class="d-flex jc-sb">
+                                    <p class="card-text text-secondary | fz-3 fz-lg-4">
+                                        <small>
+                                            <img src="./assets/images/spot16.png" alt="spot icon">
+                                            ${item.Location}
+                                        </small>
+                                    </p>
+                                    <p class="card-text text-primary fz-4 | d-none d-lg-block">
+                                        <a href="./activity.html?id=${item.ID}">
+                                            詳細介紹 ❯
+                                        </a>
+                                    </p>
+                                </div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                    </div>`
+                    strNum++;
+                }
+            }
+            home_activity.innerHTML = str;
+        })
+        .catch(function (error) {
+            console.log(error);
+        }); 
+    }
+
+    // 首頁熱門打卡景點 home_ScenicSpot：取得資料 & 渲染畫面
+    function init_scenicSpot(){
+        axios.get(endpoint_Scenic,
+            {
+            headers: getAuthorizationHeader()
+            }
+        )
+        .then(function (response) {
+            const thisData = response.data;
+            let str="";
+            let strNum = 0;
+            while(strNum<4){
+                let dataIndex= Math.floor(Math.random()*thisData.length);
+                const item = thisData[dataIndex];
+                if(item.Name && item.Picture.PictureUrl1 && item.Address){
+                    str+=`
+                    <div class="swiper-slide unselectable">
+                        <div class="ratio ratio-13x10 rounded-4 | overflow-hidden | mb-3">
+                            <a href="./scenicSpot.html?id=${item.ID}">
+                                <img class="w-100 h-100 img-cover" src="${item.Picture.PictureUrl1}" alt="${item.Name}">    
+                            </a>
+                        </div>
+                        <h5 class="ellipsis | fz-4 fz-lg-5 | mb-2">${item.Name}</h5>
+                        <p class="card-text text-secondary | fz-3 fz-lg-4">
+                            <small>
+                                <img src="./assets/images/spot16.png" alt="spot icon">
+                                ${item.Address.slice(0,3)}
+                            </small>
+                        </p>
+                    </div>`
+                    strNum++;
+                }
+            }
+            home_scenicSpot.innerHTML = str;
+        })
+        .catch(function (error) {
+            console.log(error);
+        }); 
+    }
+
+    // 首頁一再回訪美食 home_foodSpot：取得資料 & 渲染畫面
+    function init_foodSpot(){
+        axios.get(endpoint_restaurant,
+            {
+            headers: getAuthorizationHeader()
+            }
+        )
+        .then(function (response) {
+            const thisData = response.data;
+            let str="";
+            let strNum = 0;
+            while(strNum<4){
+                let dataIndex= Math.floor(Math.random()*thisData.length);
+                const item = thisData[dataIndex];
+                if(item.Name && item.Picture.PictureUrl1 && item.Address){
+                    str+=`
+                    <div class="swiper-slide unselectable">
+                        <div class="ratio ratio-13x10 rounded-4 | overflow-hidden | mb-3">
+                            <a href="./foodSpot.html?id=${item.ID}">
+                                <img class="w-100 h-100 img-cover" src="${item.Picture.PictureUrl1}" alt="${item.Name}">
+                            </a>
+                        </div>
+                        <h5 class="ellipsis | fz-4 fz-lg-5 | mb-2">${item.Name}</h5>
+                        <p class="card-text text-secondary | fz-3 fz-lg-4">
+                            <small>
+                                <img src="./assets/images/spot16.png" alt="spot icon">
+                                ${item.Address.slice(0,3)}
+                            </small>
+                        </p>
+                    </div>`
+                    strNum++;
+                }
+            }
+            home_foodSpot.innerHTML = str;
+        })
+        .catch(function (error) {
+            console.log(error);
+        }); 
+    }
+
+    init_activity();
+    init_scenicSpot();
+    init_foodSpot();
+
+</script>
+
+    </main>
+
+    
+    <!-- footer 頁尾 -->
+    <footer class="bg-footer">
+      <div class="container | d-flex ai-c jc-c | py-5">
+        <!-- Copyright -->
+        <div class="d-flex align-self-end">
+          <p class="h6 text-white | d-none d-md-block">The F2E © 2021. #Sylvia-H / Design by Breakfast</p>
+          <p class="h6 text-white text-center | d-block d-md-none">The F2E © 2021. #Sylvia-H / Design by Breakfast</p>
+        </div>
+      </div>
+    </footer>
+
+
+
+    <!-- script -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanillajs-datepicker@1.1.4/dist/js/datepicker-full.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.4/axios.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jsSHA/3.2.0/sha.js"></script>
+    <script src="./assets/js/vendors.js"></script>
+    <script src="./assets/js/all.js"></script>
+  </body>
+
+</html>
