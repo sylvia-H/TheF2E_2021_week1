@@ -272,9 +272,8 @@
                 </div>
             </div>
 
-
+            
         </div>
-
 
 
 
@@ -336,7 +335,9 @@
                 str+=`
                 <div class="foodSpotClass_Card col-6 col-md-4 col-lg-3 | position-relative">
                     <div class="ratio ratio-16x9 rounded-4 | overflow-hidden | mb-3">
-                        <img class="img-cover" src="${newArr[dataIndex].item.Picture.PictureUrl1}" alt="${newArr[dataIndex].item.Name}">
+                        <a href="#"  onclick="select_class('${Array.from(foodSpot_class)[itemNum]}');">
+                            <img class="img-cover" src="${newArr[dataIndex].item.Picture.PictureUrl1}" alt="${newArr[dataIndex].item.Name}">
+                        </a>
                     </div>
                     <p class="text-white fz-4 fz-lg-5 fw-bold | position-absolute top-50 start-50 translate-middle">${Array.from(foodSpot_class)[itemNum]}</p>
                 </div>`;
@@ -431,11 +432,15 @@
             breadcrumb_city.innerHTML = ` / ${targetInfo[0].City}`;
             breadcrumb_foodSpot.innerHTML = ` / ${targetInfo[0].Name}`;
 
-            // Hero 加入活動照片
+            // Hero 加入餐廳照片
             let heroPhoto_num = 0;
             if(targetInfo[0].Picture.PictureUrl1){
                 scenicSpot_heroSwiperSlides[0].innerHTML=`
                     <img class="w-100 h-100 img-cover" src="${targetInfo[0].Picture.PictureUrl1}" alt="${targetInfo[0].Picture.PictureDescription1}">`;
+                heroPhoto_num++;
+            }else{
+                scenicSpot_heroSwiperSlides[0].innerHTML=`
+                    <img class="w-100 h-100 img-cover" src="./assets/images/noPicture.png" alt="${targetInfo[0].Picture.PictureDescription1}">`;
                 heroPhoto_num++;
             }
             if(targetInfo[0].Picture.PictureUrl2){
@@ -461,6 +466,7 @@
 
             // 添加餐廳美食名稱
             foodSpot_resultName.innerText = targetInfo[0].Name;
+            console.log(targetInfo[0].Name);
 
             // 添加餐廳美食類別 Class
             let classStr="";
@@ -511,7 +517,11 @@
                 </iframe>`;
 
             // 推薦其他不能錯過的景點
-            recommend_showFoodSpot(targetInfo[0].City);
+            if(targetInfo[0].City){
+                recommend_showFoodSpot(targetInfo[0].City);
+            } else {
+                recommend_showFoodSpot(targetInfo[0].Address.slice(0,3));
+            }
 
         })
         .catch(function (error) {
@@ -521,18 +531,198 @@
 
 
     // 判斷初始狀況
+    // if(!location.search){
+    //     foodSpot_getClass();
+    // } else {
+    //     foodSpot_resultArea.classList.add('d-none');
+    //     foodSpot_showSpotArea.classList.remove('d-none');
+    //     const arr1 = location.search.split('?');
+    //     const id = arr1[1].split('=')[1];
+    //     console.log(id);
+    //     foodSpot_show(id);
+    // }
+
+    // 美食類別
+    function select_class(iClass){
+        console.log(iClass);
+        axios.get(`https://ptx.transportdata.tw/MOTC/v2/Tourism/Restaurant/?$format=JSON`,
+            {
+            headers: getAuthorizationHeader()
+            }
+        )
+        .then(function (response) {
+            const thisData = response.data;
+            const resultData = thisData.filter(el => el.Class==iClass);
+            console.log(iClass);
+            foodSpot_resultArea.classList.add('d-none');
+            foodSpot_showSpotArea.classList.remove('d-none');
+            let str=`
+                <h5 class="fz-6 fz-lg-9 text-dark fw-light | mb-4 mb-lg-5">
+                    搜尋結果
+                    <span class="fz-4 text-dark fw-light | ms-2">
+                        共有 <small class="text-warning">${resultData.length}</small> 筆
+                    </span>
+                </h5>
+                <div class="row">`;
+            let strNum = 0;
+            while(strNum<resultData.length){
+                resultData.forEach((item)=>{
+                    if(item.Picture.PictureUrl1){
+                        str+=`
+                        <div class="col-12 col-lg-3 | mb-5 mb-lg-8">
+                            <div class="ratio ratio-13x10 rounded-4 | overflow-hidden | mb-3">
+                                <a href="./foodSpot.html?id=${item.ID}">
+                                    <img class="w-100 h-100 img-cover" src="${item.Picture.PictureUrl1}" alt="${item.Name}">    
+                                </a>
+                            </div>
+                            <h5 class="ellipsis | fz-4 fz-lg-5 | mb-2">${item.Name}</h5>
+                            <p class="card-text text-secondary | fz-3 fz-lg-4">
+                                <small>
+                                    <img src="./assets/images/spot16.png" alt="spot icon">
+                                    ${item.City?item.City:item.Address.slice(0,3)}
+                                </small>
+                            </p>
+                        </div>`
+                    }else{
+                        str+=`
+                        <div class="col-12 col-lg-3 | mb-5 mb-lg-8">
+                            <div class="ratio ratio-13x10 rounded-4 | overflow-hidden | mb-3">
+                                <a href="./foodSpot.html?id=${item.ID}">
+                                    <img class="w-100 h-100 img-cover" src="./assets/images/noPicture.png" alt="${item.Name}">    
+                                </a>
+                            </div>
+                            <h5 class="ellipsis | fz-4 fz-lg-5 | mb-2">${item.Name}</h5>
+                            <p class="card-text text-secondary | fz-3 fz-lg-4">
+                                <small>
+                                    <img src="./assets/images/spot16.png" alt="spot icon">
+                                    ${item.City?item.City:item.Address.slice(0,3)}
+                                </small>
+                            </p>
+                        </div>`
+                    }
+                    strNum++;
+                });
+            }
+            str+=`</div>`;
+            foodSpot_showSpotArea.innerHTML = str;
+            foodSpot_resultArea.classList.add('d-none');
+            foodSpot_showSpotArea.classList.remove('d-none');
+            console.log(str);
+        })
+        .catch(function (error) {
+            console.log(error);
+        }); 
+
+    }
+    
+    // 關鍵字搜尋
+    const search_city = document.querySelector('.search_city');
+    const search_keyword = document.querySelector('.search_keyword');
+    const search_submit = document.querySelector('.search_submit');
+    function search_foodSpot(city,keyword){
+        console.log('search');
+        axios.get(`https://ptx.transportdata.tw/MOTC/v2/Tourism/Restaurant/${city}?$format=JSON`,
+            {
+            headers: getAuthorizationHeader()
+            }
+        )
+        .then(function (response) {
+            const thisData = response.data;
+            let resultData = new Set();
+            const resultData1 = thisData.filter(el => el.Name.includes(keyword));
+            const resultData2 = thisData.filter(el => el.Description.includes(keyword));
+            resultData1.forEach(el=>resultData.add(el));
+            resultData2.forEach(el=>resultData.add(el));
+            resultData = Array.from(resultData);
+            console.log(resultData1.length,resultData2.length);
+            console.log(resultData);
+            let str=`
+                <h5 class="fz-6 fz-lg-9 text-dark fw-light | mb-4 mb-lg-5">
+                    搜尋結果
+                    <span class="fz-4 text-dark fw-light | ms-2">
+                        共有 <small class="text-warning">${resultData.length}</small> 筆
+                    </span>
+                </h5>
+                <div class="row">`;
+            let strNum = 0;
+            while(strNum<resultData.length){
+                resultData.forEach((item)=>{
+                    if(item.Picture.PictureUrl1){
+                        str+=`
+                        <div class="col-12 col-lg-3 | mb-5 mb-lg-8">
+                            <div class="ratio ratio-13x10 rounded-4 | overflow-hidden | mb-3">
+                                <a href="./foodSpot.html?id=${item.ID}">
+                                    <img class="w-100 h-100 img-cover" src="${item.Picture.PictureUrl1}" alt="${item.Name}">    
+                                </a>
+                            </div>
+                            <h5 class="ellipsis | fz-4 fz-lg-5 | mb-2">${item.Name}</h5>
+                            <p class="card-text text-secondary | fz-3 fz-lg-4">
+                                <small>
+                                    <img src="./assets/images/spot16.png" alt="spot icon">
+                                    ${item.City?item.City:item.Address.slice(0,3)}
+                                </small>
+                            </p>
+                        </div>`
+                    }else{
+                        str+=`
+                        <div class="col-12 col-lg-3 | mb-5 mb-lg-8">
+                            <div class="ratio ratio-13x10 rounded-4 | overflow-hidden | mb-3">
+                                <a href="./foodSpot.html?id=${item.ID}">
+                                    <img class="w-100 h-100 img-cover" src="./assets/images/noPicture.png" alt="${item.Name}">    
+                                </a>
+                            </div>
+                            <h5 class="ellipsis | fz-4 fz-lg-5 | mb-2">${item.Name}</h5>
+                            <p class="card-text text-secondary | fz-3 fz-lg-4">
+                                <small>
+                                    <img src="./assets/images/spot16.png" alt="spot icon">
+                                    ${item.City?item.City:item.Address.slice(0,3)}
+                                </small>
+                            </p>
+                        </div>`
+                    }
+                    strNum++;
+                });
+            }
+            str+=`</div>`;
+            foodSpot_showSpotArea.innerHTML = str;
+            foodSpot_resultArea.classList.add('d-none');
+            foodSpot_showSpotArea.classList.remove('d-none');
+            console.log(str);
+        })
+        .catch(function (error) {
+            console.log(error);
+        }); 
+
+    }
+
+
+    // 按鈕監聽
+    search_submit.addEventListener('click',()=>{
+        if(search_city.value==='all') search_city.value='';
+        if(search_keyword.value==='') search_keyword.value='';
+        search_foodSpot(search_city.value,search_keyword.value);
+    });
+
+    // 判斷初始狀況
     if(!location.search){
         foodSpot_getClass();
     } else {
         foodSpot_resultArea.classList.add('d-none');
         foodSpot_showSpotArea.classList.remove('d-none');
         const arr1 = location.search.split('?');
-        const id = arr1[1].split('=')[1];
-        console.log(id);
-        foodSpot_show(id);
+        let id;
+        let city;
+        let keyword;
+        if(!arr1[1].includes('&')){
+            id = arr1[1].split('=')[1];
+            foodSpot_show(id);
+        } else{
+            city = arr1[1].split('&')[0].split('=')[1];
+            keyword = arr1[1].split('&')[1].split('=')[1];
+            search_foodSpot(city,keyword);
+        }
     }
 
-    
 
 </script>
 

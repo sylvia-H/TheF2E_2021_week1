@@ -349,7 +349,9 @@
                 str+=`
                 <div class="scenicClass_Card col-6 col-md-4 col-lg-3 | position-relative">
                     <div class="ratio ratio-16x9 rounded-4 | overflow-hidden | mb-3">
-                        <img class="img-cover" src="${newArr[dataIndex].item.Picture.PictureUrl1}" alt="${newArr[dataIndex].item.Name}">
+                        <a href="#"  onclick="select_class('${Array.from(ScenicSpot_class)[itemNum]}');">
+                            <img class="img-cover" src="${newArr[dataIndex].item.Picture.PictureUrl1}" alt="${newArr[dataIndex].item.Name}">
+                        </a>
                     </div>
                     <p class="text-white fz-4 fz-lg-5 fw-bold | position-absolute top-50 start-50 translate-middle">${Array.from(ScenicSpot_class)[itemNum]}</p>
                 </div>`;
@@ -452,6 +454,10 @@
             if(targetInfo[0].Picture.PictureUrl1){
                 scenicSpot_heroSwiperSlides[0].innerHTML=`
                     <img class="w-100 h-100 img-cover" src="${targetInfo[0].Picture.PictureUrl1}" alt="${targetInfo[0].Picture.PictureDescription1}">`;
+                heroPhoto_num++;
+            }else{
+                scenicSpot_heroSwiperSlides[0].innerHTML=`
+                    <img class="w-100 h-100 img-cover" src="./assets/images/noPicture.png" alt="${targetInfo[0].Picture.PictureDescription1}">`;
                 heroPhoto_num++;
             }
             if(targetInfo[0].Picture.PictureUrl2){
@@ -557,6 +563,87 @@
         }); 
     }
 
+    
+    // 景點類別
+    function select_class(iClass){
+        console.log(iClass);
+        axios.get(`https://ptx.transportdata.tw/MOTC/v2/Tourism/ScenicSpot/?$format=JSON`,
+            {
+            headers: getAuthorizationHeader()
+            }
+        )
+        .then(function (response) {
+            const thisData = response.data;
+            let resultData = new Set();
+            const resultData1 = thisData.filter(el => el.Class1==iClass);
+            const resultData2 = thisData.filter(el => el.Class2==iClass);
+            const resultData3 = thisData.filter(el => el.Class3==iClass);
+            resultData1.forEach(el=>resultData.add(el));
+            resultData2.forEach(el=>resultData.add(el));
+            resultData3.forEach(el=>resultData.add(el));
+            resultData = Array.from(resultData);
+            console.log(resultData);
+            scenicSpot_resultArea.classList.add('d-none');
+            scenicSpot_showSpotArea.classList.remove('d-none');
+            let str=`
+                <h5 class="fz-6 fz-lg-9 text-dark fw-light | mb-4 mb-lg-5">
+                    搜尋結果
+                    <span class="fz-4 text-dark fw-light | ms-2">
+                        共有 <small class="text-warning">${resultData.length}</small> 筆
+                    </span>
+                </h5>
+                <div class="row">`;
+            let strNum = 0;
+            while(strNum<resultData.length){
+                resultData.forEach((item)=>{
+                    if(item.Picture.PictureUrl1){
+                        str+=`
+                        <div class="col-12 col-lg-3 | mb-5 mb-lg-8">
+                            <div class="ratio ratio-13x10 rounded-4 | overflow-hidden | mb-3">
+                                <a href="./scenicSpot.html?id=${item.ID}">
+                                    <img class="w-100 h-100 img-cover" src="${item.Picture.PictureUrl1}" alt="${item.Name}">    
+                                </a>
+                            </div>
+                            <h5 class="ellipsis | fz-4 fz-lg-5 | mb-2">${item.Name}</h5>
+                            <p class="card-text text-secondary | fz-3 fz-lg-4">
+                                <small>
+                                    <img src="./assets/images/spot16.png" alt="spot icon">
+                                    ${item.City?item.City:item.Address.slice(0,3)}
+                                </small>
+                            </p>
+                        </div>`
+                    }else{
+                        str+=`
+                        <div class="col-12 col-lg-3 | mb-5 mb-lg-8">
+                            <div class="ratio ratio-13x10 rounded-4 | overflow-hidden | mb-3">
+                                <a href="./scenicSpot.html?id=${item.ID}">
+                                    <img class="w-100 h-100 img-cover" src="./assets/images/noPicture.png" alt="${item.Name}">    
+                                </a>
+                            </div>
+                            <h5 class="ellipsis | fz-4 fz-lg-5 | mb-2">${item.Name}</h5>
+                            <p class="card-text text-secondary | fz-3 fz-lg-4">
+                                <small>
+                                    <img src="./assets/images/spot16.png" alt="spot icon">
+                                    ${item.City?item.City:item.Address.slice(0,3)}
+                                </small>
+                            </p>
+                        </div>`
+                    }
+                    strNum++;
+                });
+            }
+            str+=`</div>`;
+            scenicSpot_showSpotArea.innerHTML = str;
+            scenicSpot_resultArea.classList.add('d-none');
+            scenicSpot_showSpotArea.classList.remove('d-none');
+            console.log(str);
+        })
+        .catch(function (error) {
+            console.log(error);
+        }); 
+
+    }
+    
     // 關鍵字搜尋
     const search_city = document.querySelector('.search_city');
     const search_keyword = document.querySelector('.search_keyword');
@@ -595,7 +682,23 @@
                             <p class="card-text text-secondary | fz-3 fz-lg-4">
                                 <small>
                                     <img src="./assets/images/spot16.png" alt="spot icon">
-                                    ${item.City}
+                                    ${item.City?item.City:item.Address.slice(0,3)}
+                                </small>
+                            </p>
+                        </div>`
+                    }else{
+                        str+=`
+                        <div class="col-12 col-lg-3 | mb-5 mb-lg-8">
+                            <div class="ratio ratio-13x10 rounded-4 | overflow-hidden | mb-3">
+                                <a href="./scenicSpot.html?id=${item.ID}">
+                                    <img class="w-100 h-100 img-cover" src="./assets/images/noPicture.png" alt="${item.Name}">    
+                                </a>
+                            </div>
+                            <h5 class="ellipsis | fz-4 fz-lg-5 | mb-2">${item.Name}</h5>
+                            <p class="card-text text-secondary | fz-3 fz-lg-4">
+                                <small>
+                                    <img src="./assets/images/spot16.png" alt="spot icon">
+                                    ${item.City?item.City:item.Address.slice(0,3)}
                                 </small>
                             </p>
                         </div>`
