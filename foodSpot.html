@@ -165,15 +165,15 @@
 
             <!-- 美食餐廳介紹 -->
             <h1 class="fz-6 fz-lg-9 text-dark fw-light | mb-2 mb-lg-4">
-                金都餐廳
+                餐廳
             </h1>
             <h2 class="mb-5 mb-lg-8">
-                <span class="btn btn-outline-info rounded-pill | fz-3 fz-lg-5"># 中式美食</span>
+                <span class="btn btn-outline-info rounded-pill | fz-3 fz-lg-5"># Class</span>
             </h2>
 
             <h4 class="fz-4 fz-lg-5 text-dark fw-bold | mb-3">餐廳介紹：</h4>
             <h3 class="spot_description | fz-4 fz-lg-5 fw-light | mb-8 mb-lg-12">
-                埔里金都餐廳於1994年創立於美麗的台灣中心埔里，1995年起創意取材埔里名酒研發推出紹興宴，揚名台北中華美食展，此後，不斷結合地方鄉土農特產，持續研發新健康美食與主題饗宴(日月潭邵族宴、水果宴、梅宴、茭白筍大餐、珍菇水筍宴、養生御膳、百花宴、香草宴、香米喜宴、原鄉風味餐、2003時尚蕃茄宴…等)，更榮耀承辦聖文森總理及五國元首國宴，成功的在台灣捲起金都美食風！精采展現台灣美食新風情，成為台灣中部旅遊線首選最佳的美食餐廳，並連續四年榮獲優經濟部選拔為質餐廳之殊榮。
+                介紹
             </h3>
 
             <!-- 美食餐廳相關資訊 -->
@@ -183,19 +183,27 @@
                         <tbody valign="top">
                             <tr>
                                 <td width="20%" class="fz-4 fw-bold">營業時間：</td>
-                                <td class="foodSpot_resultTime">上午11:00~14:30下午17:00~21:00</td>
+                                <td class="foodSpot_resultTime">
+                                    Time
+                                </td>
                             </tr>
                             <tr>
                                 <td class="fz-4 fw-bold">聯絡電話：</td>
-                                <td class="foodSpot_resultPhone">886-49-2995096</td>
+                                <td class="foodSpot_resultPhone">
+                                    Phone
+                                </td>
                             </tr>
                             <tr>
                                 <td class="fz-4 fw-bold">餐廳地址：</td>
-                                <td class="foodSpot_resultAddress">南投縣埔里鎮信義路236號</td>
+                                <td class="foodSpot_resultAddress">
+                                    Address
+                                </td>
                             </tr>
                             <tr>
                                 <td class="fz-4 fw-bold">官方網站：</td>
-                                <td class="foodSpot_resultWeb">http://www.jindu1994.com/</td>
+                                <td class="foodSpot_resultWeb">
+                                    WebsiteUrl
+                                </td>
                             </tr>
                         </tbody>
                     </table>
@@ -551,11 +559,11 @@
             }
         )
         .then(function (response) {
+            foodSpot_resultArea.classList.add('d-none');
+            foodSpot_showSpotArea.classList.remove('d-none');
             const thisData = response.data;
             const resultData = thisData.filter(el => el.Class==iClass);
             console.log(iClass);
-            foodSpot_resultArea.classList.add('d-none');
-            foodSpot_showSpotArea.classList.remove('d-none');
             let str=`
                 <h5 class="fz-6 fz-lg-9 text-dark fw-light | mb-4 mb-lg-5">
                     搜尋結果
@@ -605,8 +613,6 @@
             }
             str+=`</div>`;
             foodSpot_showSpotArea.innerHTML = str;
-            foodSpot_resultArea.classList.add('d-none');
-            foodSpot_showSpotArea.classList.remove('d-none');
             console.log(str);
         })
         .catch(function (error) {
@@ -627,6 +633,8 @@
             }
         )
         .then(function (response) {
+            foodSpot_resultArea.classList.add('d-none');
+            foodSpot_showSpotArea.classList.remove('d-none');
             const thisData = response.data;
             let resultData = new Set();
             const resultData1 = thisData.filter(el => el.Name.includes(keyword));
@@ -685,8 +693,6 @@
             }
             str+=`</div>`;
             foodSpot_showSpotArea.innerHTML = str;
-            foodSpot_resultArea.classList.add('d-none');
-            foodSpot_showSpotArea.classList.remove('d-none');
             console.log(str);
         })
         .catch(function (error) {
@@ -699,8 +705,12 @@
     // 按鈕監聽
     search_submit.addEventListener('click',()=>{
         if(search_city.value==='all') search_city.value='';
-        if(search_keyword.value==='') search_keyword.value='';
-        search_foodSpot(search_city.value,search_keyword.value);
+        if(search_keyword.value==='') alert('請輸入想要查詢的關鍵字');
+        if(search_keyword.value) {
+            foodSpot_resultArea.classList.add('d-none');
+            foodSpot_showSpotArea.classList.remove('d-none');
+            search_foodSpot(search_city.value,search_keyword.value);
+        }
     });
 
     // 判斷初始狀況
