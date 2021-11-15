@@ -393,9 +393,10 @@ current: index
     // 按鈕監聽
     search_submit.addEventListener('click',(e)=>{
         console.log(search_type.value,search_keyword.value);
-        // search_typeSpot(search_type.value,search_keyword.value);
-        window.location.href=`./${search_type.value}.html?city=&keyword="+encodeURIComponent(${search_keyword.value})"`;
+        if(search_keyword.value==='') alert('請輸入想要查詢的關鍵字');
+        if(search_keyword.value) {
+            window.location.href=`./${search_type.value}.html?city=&keyword="+encodeURIComponent(${search_keyword.value})"`;
+        }
     });
-
 
 </script>
