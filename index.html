@@ -86,10 +86,10 @@
                         <option value="foodSpot">品嚐美食</option>
                     </select>
                     <input class="search_keyword form-control | mb-2" type="text" placeholder="你想去哪裡？請輸入關鍵字" aria-label="你想去哪裡？請輸入關鍵字">
-                    <button type="submit" class="search_submit btn btn-success text-white w-100">
+                    <div class="search_submit btn btn-success text-white w-100">
                         <i class="fa fa-search | me-4" aria-hidden="true"></i>
                         搜&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;尋
-                    </button>
+                    </div>
                 </form>
             </div>
         </div>
@@ -419,6 +419,26 @@
     init_activity();
     init_scenicSpot();
     init_foodSpot();
+
+    
+    // 關鍵字搜尋
+    const search_type = document.querySelector('.search_type');
+    const search_keyword = document.querySelector('.search_keyword');
+    const search_submit = document.querySelector('.search_submit');
+    function search_typeSpot(type,keyword){
+        console.log(type, keyword);
+        // window.location.href=`./${type}.html?city=''&keyword=${keyword}`;
+
+    }
+
+
+    // 按鈕監聽
+    search_submit.addEventListener('click',(e)=>{
+        console.log(search_type.value,search_keyword.value);
+        // search_typeSpot(search_type.value,search_keyword.value);
+        window.location.href=`./${search_type.value}.html?city=&keyword="+encodeURIComponent(${search_keyword.value})"`;
+    });
+
 
 </script>
 

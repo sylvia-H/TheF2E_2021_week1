@@ -735,12 +735,20 @@
         let id;
         let city;
         let keyword;
+        console.log(arr1);
         if(!arr1[1].includes('&')){
             id = arr1[1].split('=')[1];
             scenicSpot_showSpot(id);
         } else{
             city = arr1[1].split('&')[0].split('=')[1];
             keyword = arr1[1].split('&')[1].split('=')[1];
+            if(keyword.includes('+encodeURIComponent')){
+                keyword = decodeURIComponent(keyword.split('+encodeURIComponent(')[1].split(')')[0]);
+                console.log(keyword);
+            } else{
+                keyword = arr1[1].split('&')[1].split('=')[1];
+            }
+            console.log(keyword);
             search_scenicSpot(city,keyword);
         }
     }
