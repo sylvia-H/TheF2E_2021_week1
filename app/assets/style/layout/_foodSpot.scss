@@ -14,3 +14,13 @@
         z-index: 10;
     }
 }
+.foodSpot_showSpotArea{
+    .ratio-13x10{
+        img{
+            &:hover{
+                -webkit-transform: scale(1.15);
+                        transform: scale(1.15);
+            }
+        }
+    }
+}
