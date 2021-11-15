@@ -22,7 +22,7 @@ current: foodSpot
             <div class="row | mb-6 mb-lg-11">
                 <div class="col-12 col-lg-3">
                     <select class="search_city form-select | mb-2" aria-label="select">
-                        <option value="全部縣市" selected>全部縣市</option>
+                        <option value="all" selected>全部縣市</option>
                         <option value="Taipei">臺北市</option>
                         <option value="NewTaipei">新北市</option>
                         <option value="Taoyuan">桃園市</option>
@@ -657,6 +657,13 @@ current: foodSpot
         } else{
             city = arr1[1].split('&')[0].split('=')[1];
             keyword = arr1[1].split('&')[1].split('=')[1];
+            if(keyword.includes('+encodeURIComponent')){
+                keyword = decodeURIComponent(keyword.split('+encodeURIComponent(')[1].split(')')[0]);
+                console.log(keyword);
+            } else{
+                keyword = arr1[1].split('&')[1].split('=')[1];
+            }
+            console.log(keyword);
             search_foodSpot(city,keyword);
         }
     }
