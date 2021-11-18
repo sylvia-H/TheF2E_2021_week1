@@ -519,7 +519,7 @@ current: scenicSpot
     // 景點類別
     function select_class(iClass){
         console.log(iClass);
-        axios.get(`https://ptx.transportdata.tw/MOTC/v2/Tourism/ScenicSpot/?$format=JSON`,
+        axios.get(endpoint_Scenic,
             {
             headers: getAuthorizationHeader()
             }
@@ -602,7 +602,7 @@ current: scenicSpot
     const search_submit = document.querySelector('.search_submit');
     function search_scenicSpot(city,keyword){
         console.log('search');
-        axios.get(`https://ptx.transportdata.tw/MOTC/v2/Tourism/ScenicSpot/${city}?$format=JSON`,
+        axios.get(`https://ptx.transportdata.tw/MOTC/v2/Tourism/ScenicSpot/${city}?$filter=Picture/PictureUrl1 ne null&$format=JSON`,
             {
             headers: getAuthorizationHeader()
             }

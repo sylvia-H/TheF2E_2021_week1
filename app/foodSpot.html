@@ -494,7 +494,7 @@ current: foodSpot
     // 美食類別
     function select_class(iClass){
         console.log(iClass);
-        axios.get(`https://ptx.transportdata.tw/MOTC/v2/Tourism/Restaurant/?$format=JSON`,
+        axios.get(endpoint_restaurant,
             {
             headers: getAuthorizationHeader()
             }
@@ -570,7 +570,7 @@ current: foodSpot
     const search_submit = document.querySelector('.search_submit');
     function search_foodSpot(city,keyword){
         console.log('search');
-        axios.get(`https://ptx.transportdata.tw/MOTC/v2/Tourism/Restaurant/${city}?$format=JSON`,
+        axios.get(`https://ptx.transportdata.tw/MOTC/v2/Tourism/Restaurant/${city}?$filter=Picture/PictureUrl1 ne null&$format=JSON`,
             {
             headers: getAuthorizationHeader()
             }
