@@ -533,6 +533,9 @@
                     src="https://www.google.com/maps?q=${targetInfo[0].Address}(${targetInfo[0].Name})&hl=zh-TW&z=15&t=&output=embed">
                 </iframe>`;
 
+            // 顯示 foodSpot_showSpotArea 區塊
+            foodSpot_showSpotArea.classList.remove('d-none');
+
             // 推薦其他不能錯過的景點
             if(targetInfo[0].City){
                 recommend_showFoodSpot(targetInfo[0].City);
@@ -569,7 +572,6 @@
         )
         .then(function (response) {
             foodSpot_resultArea.classList.add('d-none');
-            foodSpot_showSpotArea.classList.remove('d-none');
             const thisData = response.data;
             const resultData = thisData.filter(el => el.Class==iClass);
             console.log(iClass);
@@ -622,6 +624,9 @@
             }
             str+=`</div>`;
             foodSpot_showSpotArea.innerHTML = str;
+
+            // 顯示 foodSpot_showSpotArea 區塊
+            foodSpot_showSpotArea.classList.remove('d-none');
             console.log(str);
         })
         .catch(function (error) {
@@ -643,7 +648,6 @@
         )
         .then(function (response) {
             foodSpot_resultArea.classList.add('d-none');
-            foodSpot_showSpotArea.classList.remove('d-none');
             const thisData = response.data;
             let resultData = new Set();
             const resultData1 = thisData.filter(el => el.Name.includes(keyword));
@@ -702,6 +706,9 @@
             }
             str+=`</div>`;
             foodSpot_showSpotArea.innerHTML = str;
+
+            // 顯示 foodSpot_showSpotArea 區塊
+            foodSpot_showSpotArea.classList.remove('d-none');
             console.log(str);
         })
         .catch(function (error) {
@@ -717,7 +724,6 @@
         if(search_keyword.value==='') alert('請輸入想要查詢的關鍵字');
         if(search_keyword.value) {
             foodSpot_resultArea.classList.add('d-none');
-            foodSpot_showSpotArea.classList.remove('d-none');
             search_foodSpot(search_city.value,search_keyword.value);
         }
     });
@@ -727,7 +733,6 @@
         foodSpot_getClass();
     } else {
         foodSpot_resultArea.classList.add('d-none');
-        foodSpot_showSpotArea.classList.remove('d-none');
         const arr1 = location.search.split('?');
         let id;
         let city;
