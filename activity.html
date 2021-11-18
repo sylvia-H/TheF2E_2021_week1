@@ -598,7 +598,7 @@
     // 活動類別
     function select_class(iClass){
         console.log(iClass);
-        axios.get(`https://ptx.transportdata.tw/MOTC/v2/Tourism/Activity/?$format=JSON`,
+        axios.get(endpoint_activity,
             {
             headers: getAuthorizationHeader()
             }
@@ -693,7 +693,7 @@
     const search_submit = document.querySelector('.search_submit');
     function search_activity(city,keyword){
         console.log('search');
-        axios.get(`https://ptx.transportdata.tw/MOTC/v2/Tourism/Activity/${city}?$format=JSON`,
+        axios.get(`https://ptx.transportdata.tw/MOTC/v2/Tourism/Activity/${city}?$filter=Picture/PictureUrl1 ne null&$format=JSON`,
             {
             headers: getAuthorizationHeader()
             }
