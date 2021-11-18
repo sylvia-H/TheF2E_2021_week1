@@ -512,6 +512,8 @@ current: activity
                     src="https://www.google.com/maps?q=${targetInfo[0].Address}(${targetInfo[0].Name})&hl=zh-TW&z=15&t=&output=embed">
                 </iframe>`;
 
+            // 顯示 activity_showArea 區塊
+            activity_showArea.classList.remove('d-none');
             // 推薦其他不能錯過的景點
             recommend_showActivity(targetInfo[0].City);
 
@@ -532,7 +534,6 @@ current: activity
         )
         .then(function (response) {
             activity_resultArea.classList.add('d-none');
-            activity_showArea.classList.remove('d-none');
             const thisData = response.data;
             let resultData = new Set();
             const resultData1 = thisData.filter(el => el.Class1==iClass);
@@ -590,6 +591,9 @@ current: activity
             }
             str+=`</div>`;
             activity_showArea.innerHTML = str;
+
+            // 顯示 activity_showArea 區塊
+            activity_showArea.classList.remove('d-none');
             console.log(str);
         })
         .catch(function (error) {
@@ -712,6 +716,9 @@ current: activity
             }
             str+=`</div>`;
             activity_showArea.innerHTML = str;
+            
+            // 顯示 activity_showArea 區塊
+            activity_showArea.classList.remove('d-none');
             console.log(str);
         })
         .catch(function (error) {
@@ -727,7 +734,6 @@ current: activity
         if(search_keyword.value==='') alert('請輸入想要查詢的關鍵字');
         if(search_keyword.value) {
             activity_resultArea.classList.add('d-none');
-            activity_showArea.classList.remove('d-none');
             search_activity(search_city.value,search_keyword.value);
         }
     });
@@ -737,7 +743,6 @@ current: activity
         activity_getClass();
     } else {
         activity_resultArea.classList.add('d-none');
-        activity_showArea.classList.remove('d-none');
         const arr1 = location.search.split('?');
         let id;
         let city;
