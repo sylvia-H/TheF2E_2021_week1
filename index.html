@@ -317,13 +317,13 @@
                 let dataIndex= Math.floor(Math.random()*thisData.length);
                 const item = thisData[dataIndex];
                 const checkDate = parseInt(item.EndTime.slice(0,4))>=year && parseInt(item.EndTime.slice(5,7))>=month || parseInt(item.EndTime.slice(0,4))>year;
-                if(item.Picture.PictureUrl1 && !item.Name.includes('事項') && checkDate){
+                if(item.Picture.PictureUrl1 && !item.ActivityName.includes('事項') && checkDate){
                     str+=`
                     <div class="col-12 col-lg-6 | mb-4">
                         <div class="card">
                             <div class="row g-0">
                             <div class="col-4 | overflow-hidden">
-                                <a href="./activity.html?id=${item.ID}">
+                                <a href="./activity.html?id=${item.ActivityID}">
                                     <img class="card-img img-cover"
                                     src="${item.Picture.PictureUrl1}" 
                                     alt="${item.Picture.PictureDescription1}">
@@ -335,7 +335,7 @@
                                     <p class="text-secondary | fz-3 fz-lg-4">
                                         ${item.StartTime.slice(0,10)} - ${item.EndTime.slice(0,10)}
                                     </p>
-                                    <h5 class="card-title ellipsis | fz-4 fz-lg-5">${item.Name}</h5>
+                                    <h5 class="card-title ellipsis | fz-4 fz-lg-5">${item.ActivityName}</h5>
                                 </div>
                                 <div class="d-flex jc-sb">
                                     <p class="card-text text-secondary | fz-3 fz-lg-4">
@@ -345,7 +345,7 @@
                                         </small>
                                     </p>
                                     <p class="card-text text-primary fz-4 | d-none d-lg-block">
-                                        <a href="./activity.html?id=${item.ID}">
+                                        <a href="./activity.html?id=${item.ActivityID}">
                                             詳細介紹 ❯
                                         </a>
                                     </p>
@@ -379,15 +379,15 @@
             while(strNum<4){
                 let dataIndex= Math.floor(Math.random()*thisData.length);
                 const item = thisData[dataIndex];
-                if(item.Name && item.Picture.PictureUrl1 && item.Address){
+                if(item.ScenicSpotName && item.Picture.PictureUrl1 && item.Address){
                     str+=`
                     <div class="swiper-slide unselectable">
                         <div class="ratio ratio-13x10 rounded-4 | overflow-hidden | mb-3">
-                            <a href="./scenicSpot.html?id=${item.ID}">
-                                <img class="w-100 h-100 img-cover" src="${item.Picture.PictureUrl1}" alt="${item.Name}">    
+                            <a href="./scenicSpot.html?id=${item.ScenicSpotID}">
+                                <img class="w-100 h-100 img-cover" src="${item.Picture.PictureUrl1}" alt="${item.ScenicSpotName}">    
                             </a>
                         </div>
-                        <h5 class="ellipsis | fz-4 fz-lg-5 | mb-2">${item.Name}</h5>
+                        <h5 class="ellipsis | fz-4 fz-lg-5 | mb-2">${item.ScenicSpotName}</h5>
                         <p class="card-text text-secondary | fz-3 fz-lg-4">
                             <small>
                                 <img src="./assets/images/spot16.png" alt="spot icon">
@@ -419,15 +419,15 @@
             while(strNum<4){
                 let dataIndex= Math.floor(Math.random()*thisData.length);
                 const item = thisData[dataIndex];
-                if(item.Name && item.Picture.PictureUrl1 && item.Address){
+                if(item.RestaurantName && item.Picture.PictureUrl1 && item.Address){
                     str+=`
                     <div class="swiper-slide unselectable">
                         <div class="ratio ratio-13x10 rounded-4 | overflow-hidden | mb-3">
-                            <a href="./foodSpot.html?id=${item.ID}">
-                                <img class="w-100 h-100 img-cover" src="${item.Picture.PictureUrl1}" alt="${item.Name}">
+                            <a href="./foodSpot.html?id=${item.RestaurantID}">
+                                <img class="w-100 h-100 img-cover" src="${item.Picture.PictureUrl1}" alt="${item.RestaurantName}">
                             </a>
                         </div>
-                        <h5 class="ellipsis | fz-4 fz-lg-5 | mb-2">${item.Name}</h5>
+                        <h5 class="ellipsis | fz-4 fz-lg-5 | mb-2">${item.RestaurantName}</h5>
                         <p class="card-text text-secondary | fz-3 fz-lg-4">
                             <small>
                                 <img src="./assets/images/spot16.png" alt="spot icon">
